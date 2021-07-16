@@ -2,12 +2,7 @@ export { };
 
 // interface
 interface Observer {
-  update (
-    courseNo: string,
-    teacherName: string,
-    topicName: string,
-    time: string
-  );
+  update(courseNo: string, teacherName: string, topicName: string, time: string);
 }
 
 interface Subject {
@@ -41,12 +36,7 @@ class ClassData implements Subject {
   }
 
   // measuring what has been changed
-  public measureChanged(
-    courseNo: string,
-    teacherName: string,
-    topicName: string,
-    time: string
-  ) {
+  public measureChanged(courseNo: string,teacherName: string,topicName: string,time: string) {
     this.courseNo = courseNo;
     this.teacherName = teacherName;
     this.topicName = topicName;
@@ -64,12 +54,8 @@ class StudentDisplay implements Observer {
   private topicName: string;
   private time: string;
 
-  update(
-    courseNo: string,
-    teacherName: string,
-    topicName: string,
-    time: string
-  ) {
+  update(courseNo: string, teacherName: string, topicName: string, time: string) {
+    
     this.courseNo = courseNo;
     this.teacherName = teacherName;
     this.topicName = topicName;
@@ -95,12 +81,8 @@ class TeacherDisplay implements Observer {
   private topicName: string;
   private time: string;
 
-  update(
-    courseNo: string,
-    teacherName: string,
-    topicName: string,
-    time: string
-  ) {
+  update(courseNo: string, teacherName: string, topicName: string, time: string) {
+    
     this.courseNo = courseNo;
     this.teacherName = teacherName;
     this.topicName = topicName;
@@ -123,25 +105,17 @@ class TeacherDisplay implements Observer {
 // Test case with data
 const classData = new ClassData();
 
-// a.
 const s1 = new StudentDisplay();
 classData.registerObservers(s1);
-// classData.measureChanged("SWE-4501", "Nazmul Haque", "Observer Design Pattern","10.07.2021, 23:55");
 
-// b.
 const s2 = new StudentDisplay();
 classData.registerObservers(s2);
-// classData.measureChanged("SWE-4501", "Nazmul Haque", "Observer Design Pattern","10.07.2021, 23:55");
 
-// c.
+
 const t1 = new TeacherDisplay();
 classData.registerObservers(t1);
-classData.measureChanged(
-  "SWE-4501",
-  "Nazmul Haque",
-  "Observer Design Pattern",
-  "10.07.2021, 23:56"
-);
+classData.measureChanged("SWE-4501","Nazmul Haque","Observer Design Pattern","10.07.2021, 23:56");
+
 
 // Time and date formatting  function
 function formatTimeAndDate(td: string) {
