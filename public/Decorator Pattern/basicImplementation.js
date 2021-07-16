@@ -1,8 +1,10 @@
+// Base Component 
 class Car {
     getDescription() {
         return this.description;
     }
 }
+// Concrete Component/ decorated object
 class ModelS extends Car {
     constructor() {
         super(...arguments);
@@ -21,8 +23,10 @@ class ModelX extends Car {
         return 4000;
     }
 }
+// Base Decorator 
 class CarOptions extends Car {
 }
+// Decorators
 class EnhancedAutopilot extends CarOptions {
     constructor(car) {
         super();

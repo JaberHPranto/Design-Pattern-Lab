@@ -1,3 +1,4 @@
+// Base Component 
 abstract class Car {
     public description: string;
     public getDescription(): string{
@@ -6,6 +7,7 @@ abstract class Car {
     public abstract cost(): number;
 }
 
+// Concrete Component/ decorated object
 class ModelS extends Car{
     public description = "Model S"
     public cost(): number {
@@ -22,12 +24,15 @@ class ModelX extends Car{
     
 }
 
+// Base Decorator 
 abstract class CarOptions extends Car {
     public decoratedCar : Car
     public abstract getDescription(): string
     public abstract cost():number
 }
 
+
+// Decorators
 class EnhancedAutopilot extends CarOptions{
 
     public decoratedCar: Car
