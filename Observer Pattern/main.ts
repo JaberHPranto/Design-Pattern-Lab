@@ -1,5 +1,3 @@
-export { };
-
 // interface
 interface Observer {
   update(courseNo: string, teacherName: string, topicName: string, time: string);

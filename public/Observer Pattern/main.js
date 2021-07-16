@@ -84,4 +84,3 @@ function formatTimeAndDate(td) {
     const formattedData = `${dateObj}, ${timeObj}`;
     return formattedData;
 }
-export {};
