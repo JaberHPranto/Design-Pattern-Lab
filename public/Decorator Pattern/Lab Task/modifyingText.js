@@ -1,3 +1,6 @@
+/*
+Design a decorator pattern scenario for modifying text (Bold,Italic or Strike) configured by a user
+*/
 class DefaultText {
 }
 class userInputText extends DefaultText {

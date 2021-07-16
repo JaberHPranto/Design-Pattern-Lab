@@ -1,3 +1,6 @@
+/*  
+Design a decorator pattern scenario for modifying text (Bold,Italic or Strike) configured by a user 
+*/
 abstract class DefaultText{
     public userText: string;
     public abstract getText(): string
