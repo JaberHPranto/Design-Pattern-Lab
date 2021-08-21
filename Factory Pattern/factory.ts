@@ -48,7 +48,7 @@ class RocketEnemyShip extends EnemyShip {
 }
 
 class EnemyShipFactory {
-  makeShips(name: string) {
+  makeShips(name: string): EnemyShip {
     if (name === "ufo") return new UFOEnemyShip();
     else if (name === "rocket") return new RocketEnemyShip();
     else return null;
