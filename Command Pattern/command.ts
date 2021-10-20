@@ -48,7 +48,7 @@ class UpdateCustomerCommand implements Command {
 }
 
 // Invoker
-class Button {
+class _Button {
   private label: string;
   command: Command;
   constructor(command) {
@@ -68,9 +68,9 @@ class Button {
 }
 
 const acs: AddCustomerService = new AddCustomerService();
-let button: Button = new Button(new AddCustomerCommand(acs));
+let button: _Button = new _Button(new AddCustomerCommand(acs));
 button.click();
-button = new Button(new DeleteCustomerCommand(acs));
+button = new _Button(new DeleteCustomerCommand(acs));
 button.click();
-button = new Button(new UpdateCustomerCommand(acs));
+button = new _Button(new UpdateCustomerCommand(acs));
 button.click();

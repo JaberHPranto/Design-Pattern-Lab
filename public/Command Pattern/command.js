@@ -37,7 +37,7 @@ class UpdateCustomerCommand {
     }
 }
 // Invoker
-class Button {
+class _Button {
     constructor(command) {
         this.command = command;
     }
@@ -53,9 +53,9 @@ class Button {
     }
 }
 const acs = new AddCustomerService();
-let button = new Button(new AddCustomerCommand(acs));
+let button = new _Button(new AddCustomerCommand(acs));
 button.click();
-button = new Button(new DeleteCustomerCommand(acs));
+button = new _Button(new DeleteCustomerCommand(acs));
 button.click();
-button = new Button(new UpdateCustomerCommand(acs));
+button = new _Button(new UpdateCustomerCommand(acs));
 button.click();

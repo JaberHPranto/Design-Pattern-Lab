@@ -8,28 +8,28 @@ interface Widget {
   render(): void;
 }
 
-interface Button extends Widget {}
-interface TextBox extends Widget {}
+interface MyWidgetButton extends Widget {}
+interface _TextBox extends Widget {}
 
 // Material Design
-class MaterialButton implements Button {
+class MaterialButton implements MyWidgetButton {
   render(): void {
     console.log("Material Button");
   }
 }
-class MaterialTextBox implements TextBox {
+class MaterialTextBox implements _TextBox {
   render(): void {
     console.log("Material TextBox");
   }
 }
 
 // Ant Design
-class AntButton implements Button {
+class AntButton implements MyWidgetButton {
   render(): void {
     console.log("Ant Button");
   }
 }
-class AntTextBox implements TextBox {
+class AntTextBox implements _TextBox {
   render(): void {
     console.log("Ant TextBox");
   }
@@ -43,24 +43,24 @@ enum Theme {
 
 /* Now widget factory is for creating button,textBox and other factories Mat and Ant is for generating those specific Mat based or Ant based button and text box. Hence it is factory of factories */
 interface WidgetFactory {
-  createButton(): Button;
-  createTextBox(): TextBox;
+  createButton(): MyWidgetButton;
+  createTextBox(): _TextBox;
 }
 
 class MaterialWidgetFactory implements WidgetFactory {
-  createButton(): Button {
+  createButton(): MyWidgetButton {
     return new MaterialButton();
   }
-  createTextBox(): TextBox {
+  createTextBox(): _TextBox {
     return new MaterialTextBox();
   }
 }
 
 class AntWidgetFactory implements WidgetFactory {
-  createButton(): Button {
+  createButton(): MyWidgetButton {
     return new AntButton();
   }
-  createTextBox(): TextBox {
+  createTextBox(): _TextBox {
     return new AntTextBox();
   }
 }
