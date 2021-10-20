@@ -2,7 +2,7 @@
 // In this example, we only need one config manager
 class ConfigManager {
     constructor() {
-        this.settings = new Map();
+        this.settings = new ();
     }
     static getInstance() {
         return ConfigManager.instance;

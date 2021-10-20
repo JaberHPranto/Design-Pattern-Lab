@@ -2,7 +2,7 @@
 // In this example, we only need one config manager
 
 class ConfigManager {
-  private settings = new Map<string, number>();
+  private settings = new <string, number>();
   private static instance: ConfigManager = new ConfigManager();
 
   private constructor() {}
