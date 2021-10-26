@@ -1,5 +1,6 @@
 //Memento pattern is used to restore state of an object to a previous state . Basically perform undo mechanism
 // Memento -> contain object that needs to be restored
+// In this example - implement unlimited undo operation of a text editor
 class EditorState {
     constructor(contentState) {
         this.contentState = contentState;

@@ -1,48 +1,75 @@
-class Rectangle {
-    draw() {
-        console.log("Rectangle");
+/****  State Pattern  ****/
+// Concrete implementation of State class
+class Ringing {
+    alert() {
+        console.log("Phone is in ringing state");
     }
 }
-class Square {
-    draw() {
-        console.log("Square");
+class Vibration {
+    alert() {
+        console.log("Phone is in vibration state");
     }
 }
-class RoundEdgeRectangle {
-    draw() {
-        console.log("RoundEdged Rectangle");
+class Silent {
+    alert() {
+        console.log("Phone is silent state");
     }
 }
-class RoundEdgeSquare {
-    draw() {
-        console.log("RoundEdged Square");
+// Context
+class MobileAlertContext {
+    constructor() {
+        this.currentContext = new Ringing();
+    }
+    alert() {
+        this.currentContext.alert();
+    }
+    setContext(context) {
+        this.currentContext = context;
+    }
+    getContext() {
+        return this.currentContext;
     }
 }
-// Abstract Factory  -> Super Factory
-class AbstractFactory {
-    createShape(type) {
-        const shape = this.getShape(type);
-        shape.draw();
+// Main
+const mobile = new MobileAlertContext();
+mobile.setContext(new Silent());
+class _Leaf {
+    constructor(name, price) {
+        this.name = name;
+        this.price = price;
+    }
+    showPrice() {
+        console.log(`${this.name} : ${this.price}\n`);
     }
 }
-// Factory
-class ShapeFactory extends AbstractFactory {
-    getShape(type) {
-        if (type === "rect")
-            return new Rectangle();
-        if (type === "sq")
-            return new Square();
+class _Composite {
+    constructor(name) {
+        this.leafCom = [];
+        this.name = name;
+    }
+    addComp(leaf) {
+        this.leafCom.push(leaf);
+    }
+    showPrice() {
+        console.log(`${this.name} \n`);
+        for (let com of this.leafCom)
+            com.showPrice();
     }
 }
-class RoundedShapeFactory extends AbstractFactory {
-    getShape(type) {
-        if (type === "r-rect")
-            return new RoundEdgeRectangle();
-        if (type === "r-sq")
-            return new RoundEdgeSquare();
-    }
-}
-const sf = new ShapeFactory();
-sf.createShape("sq");
-const rsf = new RoundedShapeFactory();
-rsf.createShape("r-rect");
+// Client Code
+const hd = new _Leaf("HDD", 3750);
+const mouse = new _Leaf("Mouse", 1200);
+const keyboard = new _Leaf("Keyboard", 3450);
+const ram = new _Leaf("Ram", 4200);
+const motherboard = new _Composite("Motherboard");
+motherboard.addComp(hd);
+motherboard.addComp(ram);
+const peripherals = new _Composite("Peripherals");
+peripherals.addComp(mouse);
+peripherals.addComp(keyboard);
+const _computer = new _Composite("Computer");
+_computer.addComp(motherboard);
+_computer.addComp(peripherals);
+ram.showPrice();
+motherboard.showPrice();
+_computer.showPrice();
